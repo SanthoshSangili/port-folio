@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact',
@@ -46,24 +47,60 @@ export class ContactComponent {
     if (!this.contactForm.valid) {
       return;
     }
-    try {
-      const templateParams = {
-        subject: contactForm.value.subject,
-        from_name: contactForm.value.name,
-        message: contactForm.value.remarks,
-        email: contactForm.value.email,
-      };
 
-      // Send to user inbox
-      await emailjs.send(
-        'service_8hchd8h',
-        'template_hfuydlo', // <-- This template sends to YOU
-        templateParams,
-        'v_Y00kaRhtILQc8Ew'
-      );
-    } catch (err) {
-      console.log('ERROR', err);
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "Do you want to send this email now?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Send it!',
+      cancelButtonText: 'Cancel'
+    }).then(async (result: any) => {
+      if (result.isConfirmed) {
+        // Call your delete API here
+        const templateParams = {
+          subject: contactForm.value.subject,
+          from_name: contactForm.value.name,
+          message: contactForm.value.remarks,
+          email: contactForm.value.email,
+        };
+        // Send to user inbox
+        await emailjs.send(
+          'service_8hchd8h',
+          'template_hfuydlo', // <-- This template sends to YOU
+          templateParams,
+          'v_Y00kaRhtILQc8Ew'
+        );
+
+        Swal.fire(
+          'Send !',
+          'Your item has been Sent.',
+          'success'
+        )
+      }
+    });
+
+
+    // try {
+    //   const templateParams = {
+    //     subject: contactForm.value.subject,
+    //     from_name: contactForm.value.name,
+    //     message: contactForm.value.remarks,
+    //     email: contactForm.value.email,
+    //   };
+
+    //   // Send to user inbox
+    //   await emailjs.send(
+    //     'service_8hchd8h',
+    //     'template_hfuydlo', // <-- This template sends to YOU
+    //     templateParams,
+    //     'v_Y00kaRhtILQc8Ew'
+    //   );
+    // } catch (err) {
+    //   console.log('ERROR', err);
+    // }
   }
 
   // ✅ Text only input
