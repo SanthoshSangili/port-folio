@@ -1,0 +1,60 @@
+<section id="contact" class="contact-section">
+    <h2>Contact</h2>
+    <div class="row">
+      <div class="col-xl-12">
+        <form [formGroup]="contactForm" autocomplete="off" class="contact-form" (ngSubmit)="submit(contactForm)">
+  
+          <!-- Name -->
+          <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" formControlName="name" placeholder="Enter Name"
+                   (keypress)="textOnly($event)"
+                   [ngClass]="{'is-invalid': contactFormSubmitted && name?.errors}" />
+            <div *ngIf="contactFormSubmitted && name?.errors" class="invalid-feedback">
+              <div *ngIf="name?.errors?.['required']">Name is required</div>
+            </div>
+          </div>
+  
+          <!-- Subject -->
+          <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" class="form-control" formControlName="subject" placeholder="Enter Subject"
+                   (keypress)="textOnly($event)"
+                   [ngClass]="{'is-invalid': contactFormSubmitted && subject?.errors}" />
+            <div *ngIf="contactFormSubmitted && subject?.errors" class="invalid-feedback">
+              <div *ngIf="subject?.errors?.['required']">Subject is required</div>
+            </div>
+          </div>
+  
+          <!-- Email -->
+          <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" formControlName="email" placeholder="Enter Email"
+                   [ngClass]="{'is-invalid': contactFormSubmitted && email?.errors}" />
+            <div *ngIf="contactFormSubmitted && email?.errors" class="invalid-feedback">
+              <div *ngIf="email?.errors?.['required']">Email is required</div>
+              <div *ngIf="email?.errors?.['email']">Email is invalid</div>
+            </div>
+          </div>
+  
+          <!-- Remarks -->
+          <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+            <label for="remarks">Remarks</label>
+            <textarea id="remarks" maxlength="250" class="form-control" formControlName="remarks"
+                      placeholder="Enter Remarks..." rows="5"
+                      [ngClass]="{'is-invalid': contactFormSubmitted && remarks?.errors}"></textarea>
+            <div *ngIf="contactFormSubmitted && remarks?.errors" class="invalid-feedback">
+              <div *ngIf="remarks?.errors?.['required']">Remarks is required</div>
+            </div>
+          </div>
+  
+          <!-- Submit Button -->
+          <div class="btn-container">
+            <button type="submit" class="submit-btn">Send Message</button>
+          </div>
+  
+        </form>
+      </div>
+    </div>
+  </section>
+  

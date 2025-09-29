@@ -1,0 +1,71 @@
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;  /* மேலிலிருந்து கீழே direction */
+    align-items: center;      /* சென்டர் செய்ய */
+    justify-content: flex-start; /* மேலே வைத்துக் கொள்ள */
+    padding: 80px 20px;
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #222;
+    width: 100%;
+}
+
+.skills-container {
+    display: flex;
+    justify-content: center;   /* முழு container center */
+    gap: 80px;                 /* left/right column இடைவேளை */
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;            /* container center fix */
+    text-align: left;
+}
+
+.skills-left, .skills-right {
+    min-width: 200px;
+    max-width: 250px;  /* fixed width → center stay */
+}
+
+.skills-left ul, .skills-right ul {
+    list-style-type: none; /* default bullets remove */
+    padding-left: 0;
+    margin: 0;
+}
+
+.skills-left li, .skills-right li {
+    margin: 8px 0;
+    padding: 5px 0;
+    font-size: 1.1rem;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.3s ease;
+    position: relative;
+    padding-left: 25px; /* space for arrow */
+}
+
+/* arrow bullet */
+.skills-left li::before,
+.skills-right li::before {
+    content: "➤";          /* arrow symbol */
+    position: absolute;
+    left: 0;
+    color: #333;           /* default color */
+    transition: color 0.3s ease;
+}
+
+/* hover effect */
+.skills-left li:hover,
+.skills-right li:hover {
+    transform: translateX(5px); /* slight slide */
+}
+
+.skills-left li:hover::before,
+.skills-right li:hover::before {
+    color: #007bff; /* arrow color on hover */
+}

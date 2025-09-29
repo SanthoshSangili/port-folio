@@ -1,0 +1,131 @@
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 80px 20px;
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #222;
+    width: 100%;
+}
+
+.contact-info {
+    margin-top: 16px;
+}
+
+.contact-info p {
+    font-size: 1.18rem;
+    margin: 20px 0;
+    color: #28292c;
+    text-align: center;
+    letter-spacing: 0.2px;
+}
+
+.contact-info strong {
+    font-weight: 600;
+    color: #222;
+    margin-right: 7px;
+}
+
+.contact-info a {
+    color: #0c65bc;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+    word-break: break-all;
+}
+
+.contact-info a:hover {
+    color: #2561e8;
+    text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+    #contact h2 {
+        font-size: 1.35rem;
+        margin-bottom: 23px;
+    }
+
+    .contact-info p {
+        font-size: 1rem;
+    }
+}
+
+
+/* Common input styles */
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    /* subtle border */
+    background-color: White;
+    /* dark input background */
+    color: black;
+    /* white text */
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    /* smooth focus transition */
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* Placeholder color */
+.form-control::placeholder {
+    color: #888;
+    /* gray placeholder */
+}
+
+/* Focus effect */
+.form-control:focus {
+    border-color: #58A6FF;
+    /* accent color on focus */
+    box-shadow: 0 0 8px rgba(88, 166, 255, 0.4);
+    /* subtle glow */
+}
+
+/* Optional hover effect */
+.form-control:hover {
+    border-color: #5A6AFF;
+}
+
+
+.submit-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    background-color: #58A6FF;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #1F6FEB;
+    transform: scale(1.05);
+}
+
+
+.is-invalid {
+    border-color: red;
+}
+
+.invalid-feedback {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: flex-end; /* aligns button to the right */
+    margin-top: 15px; /* optional spacing from form fields */
+  }
