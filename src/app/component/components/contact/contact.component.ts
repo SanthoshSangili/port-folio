@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, MatInputModule,
+    MatFormFieldModule],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
@@ -79,6 +83,8 @@ export class ContactComponent {
           'Your item has been Sent.',
           'success'
         )
+
+        this.contactForm.reset();
       }
     });
 
