@@ -1,0 +1,24 @@
+<div class="panel">
+    <header class="panel-head">
+        <strong>Project Assistant</strong>
+        <button class="close-btn" type="button" (click)="close.emit()">✕</button>
+    </header>
+
+    <div class="messages" id="messages">
+        <div *ngFor="let m of messages" class="msg" [ngClass]="m.role === 'user' ? 'user' : 'bot'">
+            {{ m.text }}
+        </div>
+
+    </div>
+
+    <!-- SUBMIT HANDLED HERE -->
+    <form class="input-row" (ngSubmit)="sendMsg(newMessageText); newMessageText=''">
+        <input type="text" [(ngModel)]="newMessageText" name="newMessageText" autocomplete="off"
+            placeholder="Type your project-related question..." class="input-field" />
+        <button type="submit" [disabled]="!newMessageText || !newMessageText.trim()" class="send-button">
+            Send
+        </button>
+    </form>
+
+
+</div>

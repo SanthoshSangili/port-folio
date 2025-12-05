@@ -8,6 +8,9 @@ import { ProjectsComponent } from './component/components/projects/projects.comp
 import { SkillsComponent } from './component/components/skills/skills.component';
 import { UserComponent } from './component/components/user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ChatButtonComponent } from './component/components/chat-bot/chat-button/chat-button.component';
+import { ChatPanelComponent } from './component/components/chat-bot/chat-panel/chat-panel.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -21,10 +24,25 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     ProjectsComponent,
     SkillsComponent,
-    ReactiveFormsModule],
+    ReactiveFormsModule,
+    ChatPanelComponent,
+    ChatButtonComponent,
+    CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'port-folio';
+  showChat = false;
+  openChat() {
+    console.log("Chat Open Triggered");
+    this.showChat = true; setTimeout(() => focusInput(), 50);
+  }
+  closeChat() { this.showChat = false; }
+}
+
+// helper to focus input (place in same file or better use ViewChild)
+function focusInput() {
+  const el = document.querySelector('.panel input') as HTMLInputElement | null;
+  if (el) el.focus();
 }

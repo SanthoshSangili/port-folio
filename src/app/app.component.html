@@ -1,3 +1,7 @@
+<app-chat-button (open)="openChat()"></app-chat-button>
+
+<app-chat-panel *ngIf="showChat" (close)="closeChat()"></app-chat-panel>
+
 <router-outlet></router-outlet>
 
 <app-header></app-header>
@@ -7,6 +11,4 @@
 <app-projects></app-projects>
 <app-experience></app-experience>
 <app-contact></app-contact>
-
-
-
+<!-- <app-chat></app-chat> -->
