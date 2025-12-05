@@ -14,7 +14,7 @@
     <!-- SUBMIT HANDLED HERE -->
     <form class="input-row" (ngSubmit)="sendMsg(newMessageText); newMessageText=''">
         <input type="text" [(ngModel)]="newMessageText" name="newMessageText" autocomplete="off"
-            placeholder="Type your project-related question..." class="input-field" />
+            placeholder="Type your question..." class="input-field" />
         <button type="submit" [disabled]="!newMessageText || !newMessageText.trim()" class="send-button">
             Send
         </button>
