@@ -1,6 +1,9 @@
+
+var domaiUrl = 'https://port-folio-api.onrender.com/';
+
 export const environment = {
     geminiAiUrl: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
-    apiKey: 'AIzaSyBZUeZsI-6PlSyzmsvU5NMkNVToNG7q--0',
+    domaiUrl: domaiUrl + 'chat/send',
     systemInstruction:{
     role: "bot",
     parts: [

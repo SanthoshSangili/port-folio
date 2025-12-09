@@ -40,20 +40,20 @@ export class ChatPanelComponent {
     const userMessage: ChatMessage = { role: 'user', text };
     this.messages.push(userMessage);
     this.geminiService.sendMessage(this.messages.slice(0, -1), text).subscribe({
-      next: (res: any) => {
-        const botResponse =
-          res?.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
-        this.messages.push({ role: 'model', text: botResponse });
-
-        this.scrollToBottom();
-      },
-      error: (err) => {
-        console.error('Gemini Service Error:', err);
-        this.messages.push({
-          role: 'model',
-          text: "⚠️ Something went wrong. Try again."
-        });
-        this.scrollToBottom();
+      next: (chatResponse: any) => {
+        if (chatResponse.statsCode == 0) {
+          const botResponse =
+            chatResponse?.responseContent?.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
+          this.messages.push({ role: 'model', text: botResponse });
+          this.scrollToBottom();
+        } else {
+          this.messages.push({
+            role: 'model',
+            text: "⚠️ Something went wrong. Try again."
+          });
+          this.scrollToBottom();
+          this.scrollToBottom();
+        }
       }
     });
     this.newMessageText = '';
