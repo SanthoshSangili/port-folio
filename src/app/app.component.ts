@@ -35,7 +35,6 @@ export class AppComponent {
   title = 'port-folio';
   showChat = false;
   openChat() {
-    console.log("Chat Open Triggered");
     this.showChat = true; setTimeout(() => focusInput(), 50);
   }
   closeChat() { this.showChat = false; }

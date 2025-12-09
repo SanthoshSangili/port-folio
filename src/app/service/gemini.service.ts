@@ -39,7 +39,6 @@ export class GeminiService {
       contents: contents,
       // system_instruction: this.SYSTEM_INSTRUCTION
     };
-    console.log('body :', body)
     return this.http.post(`${this.API_URL}`, body);
   }
 }

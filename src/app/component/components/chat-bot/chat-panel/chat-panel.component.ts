@@ -41,7 +41,8 @@ export class ChatPanelComponent {
     this.messages.push(userMessage);
     this.geminiService.sendMessage(this.messages.slice(0, -1), text).subscribe({
       next: (chatResponse: any) => {
-        if (chatResponse.statsCode == 0) {
+        if (chatResponse.statusCode
+          == 0) {
           const botResponse =
             chatResponse?.responseContent?.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
           this.messages.push({ role: 'model', text: botResponse });
@@ -51,7 +52,6 @@ export class ChatPanelComponent {
             role: 'model',
             text: "⚠️ Something went wrong. Try again."
           });
-          this.scrollToBottom();
           this.scrollToBottom();
         }
       }

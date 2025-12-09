@@ -87,26 +87,6 @@ export class ContactComponent {
         this.contactForm.reset();
       }
     });
-
-
-    // try {
-    //   const templateParams = {
-    //     subject: contactForm.value.subject,
-    //     from_name: contactForm.value.name,
-    //     message: contactForm.value.remarks,
-    //     email: contactForm.value.email,
-    //   };
-
-    //   // Send to user inbox
-    //   await emailjs.send(
-    //     'service_8hchd8h',
-    //     'template_hfuydlo', // <-- This template sends to YOU
-    //     templateParams,
-    //     'v_Y00kaRhtILQc8Ew'
-    //   );
-    // } catch (err) {
-    //   console.log('ERROR', err);
-    // }
   }
 
   // ✅ Text only input
