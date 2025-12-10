@@ -14,7 +14,7 @@ export interface ChatMessage {
 export class GeminiService {
   environmet = environment
 
-  private API_URL = this.environmet.domaiUrl1;
+  private API_URL = this.environmet.domaiUrl;
 
   constructor(private http: HttpClient) {
   }
@@ -74,7 +74,7 @@ export class GeminiService {
     // };
   
     // Send POST request
-    return this.http.post(`${this.API_URL}chat/send`, body);
+    return this.http.post(`${this.API_URL}`, body);
   }
   
 
