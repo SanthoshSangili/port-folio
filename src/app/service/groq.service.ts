@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environment/environment';
 
@@ -11,26 +11,26 @@ export interface ChatMessage {
 }
 
 @Injectable({ providedIn: 'root' })
-export class GeminiService {
-  environmet = environment
+export class GroqService {
 
+  environmet = environment
   private readonly API_URL = this.environmet.domaiUrl;
 
   constructor(private http: HttpClient) {
   }
 
-  sendMessage(history: ChatMessage[], newMessage: string): Observable<any> {
+  sendMessage(newMessage: string): Observable<any> {
 
-    const contents = history.map(msg => ({
-      role: msg.role,
-      parts: [{ text: msg.text }],
-    }));
-
-    contents.push({ role: 'user', parts: [{ text: newMessage }] });
+    // Construct request body for Groq
     const body = {
-      contents: contents,
+      model: 'openai/gpt-oss-120b',
+      messages: [{
+        role: 'user',
+        content: newMessage
+      }]
     };
 
+    // Send POST request
     return this.http.post(`${this.API_URL}`, body);
   }
 

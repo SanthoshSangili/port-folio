@@ -6,7 +6,7 @@
 
     <div class="messages" id="messages">
         <div *ngFor="let m of messages" class="msg" [ngClass]="m.role === 'user' ? 'user' : 'bot'">
-            {{ m.text }}
+            {{ m.userMsg }}
         </div>
 
     </div>

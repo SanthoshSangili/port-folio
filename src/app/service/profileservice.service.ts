@@ -11,7 +11,7 @@ export interface ChatMessage {
     providedIn: 'root'
 })
 export class ProfileService {
-    private profile = environment.profileData;
+   /*  private profile = environment.profileData;
 
     constructor() { }
 
@@ -41,5 +41,5 @@ export class ProfileService {
         const newHistory: ChatMessage[] = [...history, botMessage];
 
         return of(newHistory);
-    }
+    } */
 }
