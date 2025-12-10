@@ -2,9 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GeminiService } from '../../../../service/gemini.service';
+import { ProfileService } from '../../../../service/profileservice.service';
 
 export interface ChatMessage {
-  role: 'user' | 'model';
+  role: 'user' | 'system';
   text: string;
 }
 
@@ -23,12 +24,14 @@ export class ChatPanelComponent {
 
   sendSound = new Audio('assets/sounds/send.mp3');
   receiveSound = new Audio('assets/sounds/receive.mp3');
-  constructor(private geminiService: GeminiService) {
+  constructor(
+    private geminiService: GeminiService,
+    private profileService: ProfileService) {
   }
 
   ngOnInit() {
     this.messages.push({
-      role: 'model',
+      role: 'system',
       text: "Hello! I'm here to provide information about Santhosh Kumar S. Please feel free to ask any profile-related questions."
     });
   }
@@ -43,13 +46,15 @@ export class ChatPanelComponent {
       next: (chatResponse: any) => {
         if (chatResponse.statusCode
           == 0) {
+          /* const botResponse =
+            chatResponse?.responseContent?.candidates?.[0]?.content?.parts?.[0]?.text || "No response"; */
           const botResponse =
-            chatResponse?.responseContent?.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
-          this.messages.push({ role: 'model', text: botResponse });
+            chatResponse?.responseContent?.choices?.[0].message?.content || "No response";
+          this.messages.push({ role: 'system', text: botResponse });
           this.scrollToBottom();
         } else {
           this.messages.push({
-            role: 'model',
+            role: 'system',
             text: "⚠️ Something went wrong. Try again."
           });
           this.scrollToBottom();
@@ -58,6 +63,21 @@ export class ChatPanelComponent {
     });
     this.newMessageText = '';
   }
+
+  /* sendMsg(text: string) {
+  if (!this.newMessageText.trim()) return;
+
+  // Add user message to history
+  this.messages.push({ role: 'user', text: this.newMessageText });
+
+  // Call service
+  this.profileService.sendMessage(this.messages, this.newMessageText).subscribe((updatedHistory: any) => {
+    this.messages = updatedHistory;
+    this.scrollToBottom();
+  });
+
+  this.newMessageText = '';
+} */
 
   scrollToBottom() {
     setTimeout(() => {

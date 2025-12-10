@@ -153,3 +153,25 @@ curl --location 'https://generativelanguage.googleapis.com/v1beta/models/gemini-
   "responseId": "SJ43aameAtm54-EP_eCH8Qg"
 }
  */
+
+
+
+/* gsk_ImiRv
+iCuKqvnIj1P
+ECBiWGdyb3F
+Y7B08ZDbxVsi
+YmKN5UhyLr
+Qni */
+
+
+/* curl --location 'https://api.groq.com/openai/v1/responses' \
+--header 'Authorization: ---' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: __cf_bm=t4MkDQ54kDUsxHP2JTsYz73C3a3TYofS24zvdJwuXeI-1765351562.3513658-1.0.1.1-q09YOG07zxNBnZIgrTksUXOB7GJEy0zvMyys_rfDLyxVRPf6r2bQ7TvzStIrXeg9J.PhQpgaErLcWa9AUlpMjjAXUShStVVKXjdezG9GPZ7xjMVyoJQWg2lycXMRl41r' \
+--data '{
+    "model": "openai/gpt-oss-20b",
+    "input": "Explain the importance of fast language models"
+}' */
+
+
+/* https://console.groq.com/docs/overview */

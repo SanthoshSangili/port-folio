@@ -1,9 +1,11 @@
 
-var domaiUrl = 'https://port-folio-api.onrender.com/';
+// var domaiUrl = 'https://port-folio-api.onrender.com/';
+var domaiUrl = 'http://localhost:8080/';
 
 export const environment = {
     geminiAiUrl: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
     domaiUrl: domaiUrl + 'chat/send',
+    domaiUrl1:'http://localhost:8080/',
     systemInstruction:{
     role: "bot",
     parts: [
@@ -140,7 +142,54 @@ export const environment = {
   `
       }
     ]
-  }
+  },
+  /* profileData : {
+    roll: 'Santhosh Assitant',
+    name: 'Santhosh Kumar',
+    location: 'Musiri, Tiruchirappalli, Tamil Nadu',
+    currentRole: 'Front-End Developer',
+    experience: { angular: 3.6, react: 1 },
+    skills: ['Angular', 'React.js', 'JavaScript', 'TypeScript', 'HTML', 'CSS'],
+    projects: [
+      { 
+        name: 'IESCMS', 
+        description: 'Integrated Excise Supply Chain Management System (Angular). Handles product request workflow, approval processes, transport pass generation, order pickup, dispatch, stock management, sales tracking, payment deductions, refunds, returns, and real-time supply chain tracking.' 
+      },
+      { 
+        name: 'HRMS', 
+        description: 'HR Portal (React.js). Handles employee registration & management, attendance & leave, project tracking, online meetings, responsive UI, REST API integration, Redux for state management.' 
+      }
+    ],
+    education: {
+      ug: 'Arignar Anna Government Arts College, Musiri (2018)',
+      pg: 'Srimad Andavan Arts & Science College, Tiruchirappalli (2020)'
+    },
+    maritalStatus: 'Unmarried',
+    languages: { 
+      tamil: 'Native / Fluent', 
+      english: 'Intermediate' 
+    },
+    contact: {
+      email: 'santhoshsangili.2802@gmail.com',
+      mobile: '+91 9585617355',
+      linkedin: 'linkedin.com/in/santhosh-kumar-sp',
+    }
+  } */
+    profileData : {
+    botName: 'Santhosh',   // Bot name
+    name: 'Santhsh Kumar S',
+    personalDetails: {
+      currentRole: 'Front-End Developer',
+      experience: {
+        total: 3.6,
+        angular: 3.6,
+        react: 1
+      },
+      location: 'Musiri, Tiruchirappalli, Tamil Nadu',
+      currentlyWorking: 'Yes, I am currently working at Oasys Cybernetics Pvt Ltd in Chennai',
+      jobChange: 'Yes, I am currently looking for a better opportunity',
+      reasonForChange: 'I want to change my job to explore better opportunities for career growth, learn advanced technologies, and take on more challenging responsibilities that match my skills'
+    }}
 }
 
 
