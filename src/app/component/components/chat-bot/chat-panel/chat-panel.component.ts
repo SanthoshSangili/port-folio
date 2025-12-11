@@ -44,7 +44,7 @@ export class ChatPanelComponent {
     if (!userMsg.trim()) return;
     const userMessage: ChatMessage = { role: 'user', userMsg };
     this.messages.push(userMessage);
-    this.groqService.sendMessage(userMsg).subscribe({
+    this.groqService.sendMessage(this.messages, userMsg).subscribe({
       next: (chatResponse: any) => {
         if (chatResponse.statusCode
           == 0) {

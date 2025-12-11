@@ -7,7 +7,7 @@ import { environment } from '../environment/environment';
 
 export interface ChatMessage {
   role: 'user' | 'system';
-  text: string;
+  userMsg: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -19,15 +19,20 @@ export class GroqService {
   constructor(private http: HttpClient) {
   }
 
-  sendMessage(newMessage: string): Observable<any> {
-
+  sendMessage(history: ChatMessage[], newMessage: string): Observable<any> {
+    const contents = history.map(msg => ({
+      role: msg.role,
+      message: msg.userMsg,
+    }));
+    
     // Construct request body for Groq
     const body = {
       model: 'openai/gpt-oss-120b',
       messages: [{
         role: 'user',
         content: newMessage
-      }]
+      }],
+      contents: contents
     };
 
     // Send POST request
